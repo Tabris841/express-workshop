@@ -1,0 +1,20 @@
+{
+  "name": "express-workshop",
+  "description": "Web applications with Express Workshop",
+  "main": "app.js",
+  "authors": [
+    "Anton Todorov"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "materialize": "^0.97.8"
+  }
+}
