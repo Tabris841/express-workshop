@@ -1,18 +1,10 @@
-"use strict";
+const modelRegistrator = require("./utils/model-registrator");
 
-const mongoose = require('mongoose');
-
-let planetSchema = new mongoose.Schema({
+module.exports = modelRegistrator.register("Planet", {
     name: {
         type: String,
-        minlength: 2,
-        maxlength: 30,
+        required: true,
         unique: true
-    }
+    },
+    coutries: [{}]
 });
-
-mongoose.model('Planet', planetSchema);
-
-let PlanetModel = mongoose.model('Planet');
-
-module.exports = PlanetModel;

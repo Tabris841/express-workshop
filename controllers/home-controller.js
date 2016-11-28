@@ -1,3 +1,9 @@
-/**
- * Created by atodor on 28.11.2016 г..
- */
+module.exports = function(data) {
+    return {
+        home(req, res) {
+            return res.render("home/home", {
+                user: req.user
+            });
+        }
+    };
+};

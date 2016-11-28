@@ -1,3 +1,8 @@
-//
-   Created by atodor on 28.11.2016 г..
+extends ../_layout
 
+block content
+    ul.list
+        each fraction in model
+            li
+                a(href="/fractions/" + fraction.id)
+                    = fraction.name

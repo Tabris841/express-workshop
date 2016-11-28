@@ -8,8 +8,7 @@
   },
   "author": "Anton Todorov",
   "license": "ISC",
-  "dependencies": {},
-  "devDependencies": {
+  "dependencies": {
     "body-parser": "^1.15.2",
     "bower": "^1.8.0",
     "cookie-parser": "^1.4.3",
@@ -17,8 +16,14 @@
     "express-session": "^1.14.2",
     "mongodb": "^2.2.11",
     "mongoose": "^4.7.0",
+    "morgan": "^1.7.0",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
-    "pug": "^2.0.0-beta6"
+    "pug": "^2.0.0-beta6",
+    "stylus": "^0.54.5"
+  },
+  "devDependencies": {
+    "eslint": "^3.10.2",
+    "nodemon": "^1.11.0"
   }
 }

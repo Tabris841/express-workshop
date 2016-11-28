@@ -1,26 +1,11 @@
-'use strict';
+const modelRegistrator = require("./utils/model-registrator");
 
-const mongoose = require('mongoose');
-const planetSchema = require('./planet-model');
-
-let citySchema = new mongoose.Schema({
+module.exports = modelRegistrator.register("City", {
     name: {
         type: String,
-        minlength: 2,
-        maxlength: 30,
+        required: true,
         unique: true
     },
-    country: {
-        type: String,
-        minlength: 2,
-        maxlength: 30,
-        unique: true,
-        planet: planetSchema
-    }
+    country: {},
+    planet: {}
 });
-
-mongoose.model('City', citySchema);
-
-let CityModel = mongoose.model('City');
-
-module.exports = CityModel;

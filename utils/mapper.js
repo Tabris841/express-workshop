@@ -1,3 +1,8 @@
-/**
- * Created by atodor on 28.11.2016 г..
- */
+module.exports = {
+    map(obj, ...props) {
+        return props.reduce((mapped, prop) => {
+            mapped[prop] = obj[prop];
+            return mapped;
+        }, {});
+    }
+};

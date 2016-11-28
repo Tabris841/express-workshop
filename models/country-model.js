@@ -1,3 +1,11 @@
-/**
- * Created by atodor on 28.11.2016 г..
- */
+const modelRegistrator = require("./utils/model-registrator");
+
+module.exports = modelRegistrator.register("County", {
+    name: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    cities: [{}],
+    planet: {}
+});

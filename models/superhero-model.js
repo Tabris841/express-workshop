@@ -1,67 +1,29 @@
-'use strict';
+const modelRegistrator = require("./utils/model-registrator");
 
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
-const citySchema = require('./city-model');
-const factionSchema = require('./fraction-model');
-const enums = require("../config/enums");
-
-let powerSchema = new mongoose.Schema({
+module.exports = modelRegistrator.register("Superhero", {
     name: {
         type: String,
-        require: true,
-        minlength: 3,
-        maxlength: 35,
-        unique: true
-    }
-});
-
-let superheroSchema = new mongoose.Schema({
-    name: {
-        type: String,
-        require: true,
-        minlength: 3,
-        maxlength: 60
+        required: true
     },
     secretIdentity: {
         type: String,
-        require: true,
-        minlength: 3,
-        maxlength: 20,
-        unique: true,
+        required: true
     },
     alignment: {
         type: String,
-        require: true,
-        enum: enums.alignmentEnum
+        required: true
     },
     story: {
         type: String,
-        require: true,
-        validate: /\S+/
+        required: true
     },
-    image: {
+    imageUrl: {
         type: String,
-        require: true
+        required: true
     },
-    city: {
-        type: String,
-        require: true,
-        minlength: 2,
-        maxlength: 30,
-        unique: true,
-    },
-    fractions: [{
-        type: String,
-        require: true,
-        minlength: 2,
-        maxlength: 30,
-    }],
-    powers: [powerSchema]
+    fractions: [{}],
+    powers: [{}],
+    city: {},
+    country: {},
+    planet: {}
 });
-
-mongoose.model('Superhero', superheroSchema);
-
-let SuperheroModel = mongoose.model('Superhero');
-
-module.exports = SuperheroModel;

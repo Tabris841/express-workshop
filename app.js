@@ -1,7 +1,9 @@
-'use strict';
+const config = require("./config");
 
-const PORT = 3000;
+let data = require("./data")(config.connectionString["prod"]);
 
-const app = require('./config/app');
+const app = require("./config/application")({ data });
 
-app.listen(PORT, () => console.log(`Server start at http://localhost:${PORT}`));
+require("./routers")({ app, data });
+
+app.listen(config.port, () => console.log(`Superheroes running at :${config.port}`));

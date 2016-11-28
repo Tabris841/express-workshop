@@ -1,34 +1,16 @@
-"use strict";
+const modelRegistrator = require("./utils/model-registrator");
 
-const mongoose = require('mongoose');
-const enums = require('../config/enums');
-
-let factionSchema = new mongoose.Schema({
+module.exports = modelRegistrator.register("Fraction", {
     name: {
         type: String,
-        minlength: 2,
-        maxlength: 30,
+        required: true,
         unique: true
     },
     alignment: {
         type: String,
-        require: true,
-        enum: enums.alignmentEnum
+        required: true
     },
-    planets: [{
-        type: String,
-        require: true,
-        unique: true
-    }],
-    members: [{
-        type: String,
-        require: true,
-        unique: true
-    }]
+    superheroes: [{}],
+    cities: [{}],
+    planets: [{}]
 });
-
-mongoose.model('Faction', factionSchema);
-
-let FactionModel = mongoose.model('Faction');
-
-module.exports = FactionModel;

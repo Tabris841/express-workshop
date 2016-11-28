@@ -1,27 +1,13 @@
-'use strict';
+const modelRegistrator = require("./utils/model-registrator");
 
-const mongoose = require('mongoose');
-
-let userSchema = new mongoose.Schema({
+module.exports = modelRegistrator.register("User", {
     username: {
         type: String,
-        require: true
+        required: true,
+        unique: true
     },
     password: {
         type: String,
-        require: true
-    },
-    displayName: {
-        type: String,
-        require: true
-    },
-    image: {
-        type: String
+        required: true
     }
 });
-
-mongoose.model('User', userSchema);
-
-let UserModel = mongoose.model('User');
-
-module.exports = UserModel;

@@ -1,39 +1,21 @@
-'use strict';
-
-const passport = require('passport');
-const User = require('../models/user-model');
-const data = require("../data")({ User });
-
-module.exports = () => {
+module.exports = function(data) {
     return {
-        loginLocal(req, res, next) {
-            passport.authenticate('local', (err, user, info) => {
-                if (err) return next(err);
-                if (!user) return res.redirect('/login');
-
-                req.logIn(user, (err) => {
-                    if (err) return next(err);
-                    return res.redirect('/');
+        signUp(req, res) {
+            let { username, password } = req.body;
+            data.createUser(username, password)
+                .then(user => {
+                    return res.redirect("/auth/sign-in");
                 });
-            })(req, res, next)
         },
-        logout(req, res) {
+        signOut(req, res) {
             req.logout();
-            res.redirect('/');
+            res.redirect("/");
         },
-        register(req, res) {
-            const user = {
-                username: req.body.username,
-                password: req.body.password,
-                displayName: req.body.displayName,
-                image: req.body.image
-            };
-
-            data.registerUser(user)
-                .then(dbUser => {
-                    res.status(201).send('<h1>Worked</h1>');
-                })
-                .catch((err) => res.status(409).json(err))
+        getSignUpForm(req, res) {
+            return res.render("authentication/sign-up");
+        },
+        getSignInForm(req, res) {
+            return res.render("authentication/sign-in");
         }
-    }
+    };
 };
