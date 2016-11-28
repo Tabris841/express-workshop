@@ -2,21 +2,22 @@
 
 const passport = require('passport');
 const localStrategy = require('./local-stategy');
+const User = require('../../models/user-model');
 
 module.exports = (app) => {
     app.use(passport.initialize());
     app.use(passport.session());
 
     passport.serializeUser((user, done) => {
-        if (user) done(null, user.id);
+        done(null, user);
     });
 
-    passport.deserializeUser((user, done) => {
-        User.findById(id, (err, user) => {
+    passport.deserializeUser((id, done) => {
+        User.findById({ _id: id }, (err, user) => {
             done(err, user);
         });
     });
 
-    localStrategy(passport, data);
+    localStrategy(passport, User);
 };
 

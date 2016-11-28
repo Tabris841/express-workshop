@@ -23,6 +23,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(session({ secret: 'workshop' }));
 
+require('../passport/')(app);
+
 // let batman = {
 //     name: "Batman",
 //     secretIdentity: "Bruce Wayne",
